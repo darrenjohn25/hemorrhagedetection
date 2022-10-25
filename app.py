@@ -1,13 +1,14 @@
 import numpy as np
 import streamlit as st
 import tensorflow as tf
+from tensorflow import keras as kp
 import numpy as np
 from PIL import Image
 
 # new branch changes
 st.markdown("<h1 style='text-align: center;'>Hemorrhage Detection</h1>", unsafe_allow_html=True)
 #change in master
-model = tf.keras.models.load_model("weightsVGG.h5")
+model = kp.models.load_model("weightsVGG.h5")
 ### load file
 file = st.file_uploader("Upload a CT file of Brain in Jpeg")
 if file is not None:
