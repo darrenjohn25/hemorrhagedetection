@@ -18,7 +18,7 @@ if file is not None:
     )
     image = np.array(image)
     image = image[...,::-1]
-    img = tf.image.resize(image, size=(224,224))
+    img = tf.image.resize(image, size=(128,128))
     img = np.array(img / 255.0)
     image_batch = np.expand_dims(img,axis=0)
     prediction = model.predict(image_batch)
