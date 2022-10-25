@@ -17,13 +17,13 @@ if file is not None:
         image,
     )
     image = np.array(image)
-    # img=tf.image.grayscale_to_rgb(image)
     image = image[...,::-1]
     img = tf.image.resize(image, size=(224,224))
     img = np.array(img / 255.0)
-    prediction = model.predict(img)
+    image_batch = np.expand_dims(img,axis=0)
+    prediction = model.predict(image_batch)
     pred_new= np.argmax(prediction, axis=1)
     if (pred_new == 1):
-        st.title("Predicted Label for the image is Normal")
+        st.title("Predicted Label for the image is Detected Hemorrhage")
     else:
-        st.title("Predicted Label for the image is Covid-19")
+        st.title("Predicted Label for the image is Normal")
